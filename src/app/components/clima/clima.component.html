@@ -1,0 +1,29 @@
+<h1>Detalles del Clima</h1>
+<button (click)="ActualizarClima();" class="btn btn-primary"> Consultar mi ubicación</button>
+<br>
+<br>
+<div class="col-md-6">
+    <div class="mb-3">
+      <label for="ciudad" class="form-label" aria-placeholder="San Salvador, El Salvador">Busqueda por ciudad</label>
+      <input type="text" class="form-control" id="ciudad" name="ciudad" value="{{datosClimaActual.location.region}}" #ciudad placeholder="San Salvador, El Salvador">
+    </div>
+    <button (click)="obtenerClimaPorCiudad(ciudad.value);" class="btn btn-secondary">Buscar</button>
+</div>
+<br>
+<br>
+<div class="col-md-6">
+    <input hidden type="text" name="geolocalizacion" value ="{{Latitud}},{{Longitud}}">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Clima en: {{datosClimaActual.location.name}} /{{datosClimaActual.location.region}}/ {{datosClimaActual.location.country}}</strong>
+        <h3 class="mb-0">Temperatura: {{datosClimaActual.current.temp_c}} °C</h3>
+        <div class="mb-1 text-muted">Fecha y hora: {{datosClimaActual.location.localtime}}</div>
+        <p class="card-text mb-auto">El clima estará: {{datosClimaActual.current.condition.text}}.</p>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <!-- <svg   xmlns="" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+            <img src="{{datosClimaActual.current.condition.icon}}"  role="img" class="img">
+      </div>
+    </div>
+  </div>
+
